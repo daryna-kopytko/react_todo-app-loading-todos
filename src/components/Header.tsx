@@ -15,12 +15,15 @@ export const Header: React.FC<HeaderProps> = ({
   newTodo,
   onChange,
 }) => {
+  const isActive: boolean =
+    todos.map(todo => todo.completed).length === todos.length;
+
   return (
     <header className="todoapp__header">
       <button
         type="button"
         className={classNames('todoapp__toggle-all', {
-          active: todos.map(todo => todo.completed).length === todos.length,
+          active: isActive,
         })}
         data-cy="ToggleAllButton"
       />

@@ -47,10 +47,10 @@ export const App: React.FC = () => {
   const filteredTodos = useMemo(() => {
     switch (selectedTodoStatus) {
       case TodoStatus.Active:
-        return todos.filter(todo => todo.completed === false);
+        return todos.filter(todo => !todo.completed);
 
       case TodoStatus.Completed:
-        return todos.filter(todo => todo.completed === true);
+        return todos.filter(todo => todo.completed);
 
       default:
         return todos;
@@ -98,7 +98,7 @@ export const App: React.FC = () => {
   );
 
   const filteringTodosByActiveStatus = useMemo(
-    () => [...todos].filter(todo => todo.completed === false).length,
+    () => [...todos].filter(todo => !todo.completed).length,
     [todos],
   );
 
